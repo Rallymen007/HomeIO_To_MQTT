@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2015
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeIO_MQTT", "HomeIO_MQTT\HomeIO_MQTT.csproj", "{BBA412FE-1F8C-4AAC-9572-8865C6DE5E86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeIO_WS", "HomeIO_WS\HomeIO_WS.csproj", "{A05DF85C-7430-49DF-AB2D-EBFB07601CC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{BBA412FE-1F8C-4AAC-9572-8865C6DE5E86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBA412FE-1F8C-4AAC-9572-8865C6DE5E86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBA412FE-1F8C-4AAC-9572-8865C6DE5E86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A05DF85C-7430-49DF-AB2D-EBFB07601CC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A05DF85C-7430-49DF-AB2D-EBFB07601CC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A05DF85C-7430-49DF-AB2D-EBFB07601CC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A05DF85C-7430-49DF-AB2D-EBFB07601CC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

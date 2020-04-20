@@ -256,6 +256,7 @@ namespace HomeIO_MQTT {
                 default: break;
             }
             foreach (MqttClient client in clients) {
+                Console.WriteLine("Publishing to client " + topic);
                 client.Publish(topic, Encoding.UTF8.GetBytes(value.ToString()));
             }
         }
