@@ -1,5 +1,6 @@
 ﻿using EngineIO;
 using Nancy;
+using Nancy.Extensions;
 using Nancy.Hosting.Self;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,7 @@ namespace HomeIO_WS {
             // register routes
             Get("/", args => string.Join("\n", topicToMemory.Keys.Select(k=>"/home/" + k)));
             Get("/home/{devid*}", args => getValue(topicToMemory[args.devid]));
+            Post("/home/{devid*}", args => setValue(args));
 
             if (!init) {
                 init = true;
@@ -153,6 +155,49 @@ namespace HomeIO_WS {
                     Thread.Sleep(100);
                 }
             } catch (ThreadAbortException) { }
+        }
+
+        private String setValue(dynamic args) {
+            Memory mem = topicToMemory[args.devid];
+            var str = Request.Body.AsString();
+            try {
+                switch (mem.GetType().Name) {
+                    case "MemoryBit":
+                        (mem as MemoryBit).Value = bool.Parse(str);
+                        break;
+                    case "MemoryByte":
+                        (mem as MemoryByte).Value = byte.Parse(str);
+                        break; ;
+                    case "MemoryShort":
+                        (mem as MemoryShort).Value = short.Parse(str);
+                        break;
+                    case "MemoryInt":
+                        (mem as MemoryInt).Value = int.Parse(str);
+                        break;
+                    case "MemoryLong":
+                        (mem as MemoryLong).Value = long.Parse(str);
+                        break; 
+                    case "MemoryFloat":
+                        (mem as MemoryFloat).Value = float.Parse(str);
+                        break;
+                    case "MemoryDouble":
+                        (mem as MemoryDouble).Value = double.Parse(str);
+                        break;
+                    case "MemoryString":
+                        (mem as MemoryString).Value = args.value;
+                        break;
+                    case "MemoryDateTime":
+                        (mem as MemoryDateTime).Value = DateTime.Parse(str);
+                        break;
+                    case "MemoryTimeSpan":
+                        (mem as MemoryTimeSpan).Value = TimeSpan.Parse(str);
+                        break;
+                    default: break;
+                }
+            } catch(Exception ex) {
+                return args.devid + " NOT set to " + getValue(mem) + "\n Error: " + ex.Message;
+            }
+            return args.devid + " set to " + getValue(mem);
         }
 
         private String getValue(Memory mem) {
